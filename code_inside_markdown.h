@@ -21,10 +21,10 @@ class code
     protected:
 
     private:
-         bool code_block;
-         bool tab;
-         bool space;
-         int space_int;
+        bool code_block;
+        bool tab;
+        bool space;
+        int space_int;
         bool previous_code_block;
 };
 

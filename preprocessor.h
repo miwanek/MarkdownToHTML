@@ -24,8 +24,8 @@ class preprocessor
     protected:
 
     private:
-         bool paragraph; ///< flaga czy znaleźliśmy paragraf
-         bool paragraph_activated; ///< flaga czy mieliśmy w poprzednim wypadku z paragrafem
+         bool paragraph; 		///< flaga czy znaleźliśmy paragraf
+         bool paragraph_activated; 	///< flaga czy mieliśmy w poprzednim wypadku z paragrafem
 };
 
 #endif // PREPROCESSOR_H

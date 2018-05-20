@@ -7,29 +7,29 @@
 
 various_lists::various_lists()
 {
-    unordered_list=false;
-    ordered_list= false;
+    unordered_list = false;
+    ordered_list = false;
     unordered_list_chance = false;
-    ordered_list_chance= 0;
-    length= 0;
-    blank= 0;
-    active_ordered= false;
-    active_unordered= false;
+    ordered_list_chance = 0;
+    length = 0;
+    blank = 0;
+    active_ordered = false;
+    active_unordered = false;
 
 }
 
 void various_lists::reset() ///< Funkcja resetująca atrybuty  funkcji
 {
-    unordered_list=false;
-    ordered_list= false;
+    unordered_list = false;
+    ordered_list = false;
     unordered_list_chance = false;
-    ordered_list_chance= 0;
-    length= 0;
-    blank= 0;
+    ordered_list_chance = 0;
+    length = 0;
+    blank = 0;
 }
 void various_lists::set_active_ordered( bool state)
 {
-    active_ordered= state;
+    active_ordered = state;
 }
 
 bool various_lists::get_active_ordered( ) ///< funkcja zwracająca wartość flagi mówiącej o trwaniu listy numerowanej
@@ -43,7 +43,7 @@ void various_lists:: check(std::string current, bool last) ///< funkcja sprawdza
     for(size_t i=0; i<current.length()  ; i++)
     {
         if(blank > 3 ) break;
-        if( ( current[i]== '+' || current[i]== '-' || current[i]== '*' ) && unordered_list_chance == false )
+        if( ( current[i] == '+' || current[i] == '-' || current[i] == '*' ) && unordered_list_chance == false )
         {
             unordered_list_chance = true; ///< Pojawia się możliwość, że mamy do czynienia z listą nieoznaczoną
             length++;
@@ -56,7 +56,7 @@ void various_lists:: check(std::string current, bool last) ///< funkcja sprawdza
                 length++;
                 return;
             }
-            if( ( current[i]== ' ' || current[i]== '<' ) && unordered_list_chance== false )
+            if( ( current[i] == ' ' || current[i] == '<' ) && unordered_list_chance == false )
             {
                 blank++;
                 length++;
@@ -64,15 +64,15 @@ void various_lists:: check(std::string current, bool last) ///< funkcja sprawdza
             else break; ///< Jeśli pojawi się cos innego to już nie ma szans na liste nieoznaczoną
         }
     }
-    blank=0;
-    length=0;
+    blank =0;
+    length =0;
     for(size_t i=0; i<current.length() ; i++)
     {
         if(blank > 3 && ordered_list_chance == 0) return;
 
-        if( current[i]>= '0' && current[i]<= '9' && ordered_list_chance== 0 ) ///< Sprawdzamy czy mamy doczynienia z liczbą dziesietną
+        if( current[i] >= '0' && current[i] <= '9' && ordered_list_chance == 0 ) ///< Sprawdzamy czy mamy doczynienia z liczbą dziesietną
         {
-            ordered_list_chance= 1;
+            ordered_list_chance = 1;
             length++;
         }
         else
@@ -81,20 +81,20 @@ void various_lists:: check(std::string current, bool last) ///< funkcja sprawdza
             {
                if(current[i] == '.')
                {
-                   ordered_list_chance= 2;
+                   ordered_list_chance = 2;
                     length++;
                     continue;
                }
                else
                {
-                   if( current[i]> '9' ||  current[i]< '0') return;
+                   if( current[i] > '9' ||  current[i] < '0') return;
                }
                 length++;
             }
 
             if( ordered_list_chance == 2)
             {
-                if( current[i] == ' ') ordered_list= true;
+                if( current[i] == ' ') ordered_list = true;
                 length++;
                 return;
             }
@@ -103,19 +103,19 @@ void various_lists:: check(std::string current, bool last) ///< funkcja sprawdza
             {
                 length++;
                 blank++;
-                if( current[i]!= ' ' && current[i]!= '<' ) return; ///< Jeśli pojawi się cos innego to już nie ma szans na liste oznaczoną
+                if( current[i] != ' ' && current[i] != '<' ) return; ///< Jeśli pojawi się cos innego to już nie ma szans na liste oznaczoną
             }
         }
     }
-    blank=0;
-    //if(last==true) return;
+    blank = 0;
+
 }
 
 bool various_lists:: move_forward( converter& conv,  size_t current_place ) ///< funkcja dodająca tag rozpoczynający listę
 {
     if( unordered_list == true && active_unordered == false )
     {
-        if(Menu::lowercase==false)
+        if(Menu::lowercase == false)
         {
             conv.insert_new("<UL>", current_place);
         }
@@ -123,13 +123,13 @@ bool various_lists:: move_forward( converter& conv,  size_t current_place ) ///<
         {
             conv.insert_new("<ul>", current_place);
         }
-        active_unordered= true;
+        active_unordered = true;
         return true;
     }
 
-    if( ordered_list== true  && active_ordered == false )
+    if( ordered_list == true  && active_ordered == false )
     {
-        if(Menu::lowercase==false)
+        if(Menu::lowercase ==false)
         {
             conv.insert_new("<OL>", current_place);
         }
@@ -137,7 +137,7 @@ bool various_lists:: move_forward( converter& conv,  size_t current_place ) ///<
         {
             conv.insert_new("<ol>",  current_place);
         }
-        active_ordered=true;
+        active_ordered = true;
         return true;
     }
     return false;
@@ -145,7 +145,7 @@ bool various_lists:: move_forward( converter& conv,  size_t current_place ) ///<
 
 void various_lists::change(std::string& current, std::string& next  )
 {
-    if( ( unordered_list== true ||  ordered_list ==  true ) && ( active_ordered == true || active_unordered == true ) )
+    if( ( unordered_list == true ||  ordered_list ==  true ) && ( active_ordered == true || active_unordered == true ) )
     {
         current.erase(0 , length);
         if(Menu::lowercase == false)
@@ -175,9 +175,9 @@ bool various_lists::get_ordered_list( )
 
 bool various_lists:: finish ( converter& conv,   size_t current_place )
 {
-    if( unordered_list == false && active_unordered ==true  )
+    if( unordered_list == false && active_unordered == true  )
     {
-        if(Menu::lowercase==false)
+        if(Menu::lowercase == false)
         {
             conv.insert_new("</UL>", current_place);
         }
@@ -185,13 +185,13 @@ bool various_lists:: finish ( converter& conv,   size_t current_place )
         {
             conv.insert_new("</ul>", current_place);
         }
-        active_unordered=false;
+        active_unordered = false;
         return true;
     }
 
-    if( ordered_list== false && active_ordered ==true )
+    if( ordered_list == false && active_ordered == true )
     {
-        if(Menu::lowercase==false)
+        if(Menu::lowercase == false)
         {
             conv.insert_new("</OL>", current_place);
         }
@@ -199,7 +199,7 @@ bool various_lists:: finish ( converter& conv,   size_t current_place )
         {
             conv.insert_new("</ol>",  current_place);
         }
-        active_ordered=false;
+        active_ordered = false;
         return true;
     }
     return false;
