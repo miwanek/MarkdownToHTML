@@ -2,6 +2,8 @@ CC = g++
 
 
 all:
+	make release
+	make tests
 
 release: main various_lists linker menu converter  headache preprocessor code
 	$(CC)  main.o linker.o headache.o Menu.o converter.o preprocessor.o various_lists.o code_inside_markdown.o -o conv
