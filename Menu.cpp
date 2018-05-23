@@ -71,8 +71,8 @@ void Menu::help(char** argv)///< Wyczerpujący help
     {
         cout << "Do funkcji można podać kilka argumentów: " << endl << endl;
         cout << "- nazwa ujęta w * * oznacza argument możliwy do  " << endl;
-        cout << "  wprowadzenia do programu oczywiście już bez * *" << endl;
-        cout << "- *help* wywołane bez innych argumentów pokaze to pomocne menu " << endl;
+        cout << "  wprowadzenia do programu" << endl;
+        cout << "- *help* wywołane bez innych argumentów pokaze to menu " << endl;
         cout << "- pierwszy argument musi być zawsze plikiem źródłowym typu txt lub md " << endl;
         cout << "  zawierającym tekst w markdownie  LUB komendą *help*" << endl;
         cout << "- drugi argument powinien zawierać nazwe pliku wynikowego" << endl;

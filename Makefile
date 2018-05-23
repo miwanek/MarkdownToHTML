@@ -31,8 +31,5 @@ preprocessor:
 code:
 	$(CC) -c code_inside_markdown.cpp
 
-
-
-
 clean:
-	-rm *o converter
+	-rm *o conv 

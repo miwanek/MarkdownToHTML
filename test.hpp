@@ -25,7 +25,7 @@ BOOST_AUTO_TEST_CASE( Basic_function_test ) ///< Sprawdzamy  podstawowe funkcje
     argv[1] = new char[20];
     argv[2] = new char[20];
     string pom;
-    pom = "plik_testowy_3.md";
+    pom = "test.md";
     for(int i = 0; i < pom.length(); i++)
     {
          argv[1][i] = pom[i];
@@ -67,7 +67,7 @@ BOOST_AUTO_TEST_CASE( Second_test ) ///< Sprawdzamy  dodwanie poprzecznych linii
     arg[1] = new char[20];
     arg[2] = new char[20];
     string pom;
-    pom="plik_testowy_2.md";
+    pom="test2.md";
     for(int i = 0; i < pom.length(); i++)
     {
          arg[1][i] = pom[i];
